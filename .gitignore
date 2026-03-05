@@ -1,0 +1,9 @@
+.dSYM
+*.dSYM
+*.[!a-zA-Z]*
+.vscode/
+**/build/
+forgit.txt
+.idea/
+CMakeLists.txt
+cmake-build-debug/
