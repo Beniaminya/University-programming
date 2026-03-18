@@ -73,14 +73,9 @@ int depthTree(Node* root) {
 
 Node* searchNode(Node* root, int value) {
     if (!root) return nullptr;
-
-    if (root->data == value)
-        return root;
-
-    if (value < root->data)
-        return searchNode(root->left, value);
-    else
-        return searchNode(root->right, value);
+    if (root->data == value) return root;
+    if (value < root->data) return searchNode(root->left, value);
+    else return searchNode(root->right, value);
 }
 
 Node* findMax(Node* root) {
