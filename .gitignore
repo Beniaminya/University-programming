@@ -7,3 +7,4 @@ forgit.txt
 .idea/
 CMakeLists.txt
 cmake-build-debug/
+.exe
