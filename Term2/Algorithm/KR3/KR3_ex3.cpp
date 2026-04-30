@@ -92,11 +92,40 @@ void inorder(Node* root) {
     inorder(root->right);
 }
 
+
+Node* findMin(Node* node) {
+    return node->left ? findMin(node->left) : node;
+}
+
+Node* remove(Node* node, int value) {
+    if (!node) return nullptr;
+
+    if (value < node->data)
+        node->left = remove(node->left, value);
+    else if (value > node->data)
+        node->right = remove(node->right, value);
+    else {
+        if (!node->left || !node->right) {
+            Node* child = node->left ? node->left : node->right;
+            delete node;
+            return child;
+        }
+        Node* successor = findMin(node->right);
+        node->data      = successor->data;
+        node->right     = remove(node->right, successor->data);
+    }
+
+    return balance(node);
+}
+
 int main() {
-    Node* root = nullptr;
+    Node* tree = nullptr;
 
     for (int val : {30, 20, 10, 25, 35, 5, 15})
-        root = insert(root, val);
-    inorder(root);
+        tree = insert(tree, val);
+    inorder(tree);
+    cout << endl;
+    tree = remove(tree,20);
+    inorder(tree);
     return 0;
 }
