@@ -22,8 +22,6 @@ void updateHeight(Node* node) {
         node->height = 1 + max(height(node->left), height(node->right));
 }
 
-// Forward declaration
-Node* balance(Node* node);
 
 Node* turnRight(Node* A) {
     Node* B      = A->left;
